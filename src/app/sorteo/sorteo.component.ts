@@ -7,14 +7,19 @@ import { Component } from '@angular/core';
   templateUrl: './sorteo.component.html',
   styleUrl: './sorteo.component.css'
 })
+
+
 export class SorteoComponent {
  color:string[]=["orange","green","blue","yellow","red"]
  descuento:number=0
  texto?:string
  total?:number
+lista:Sorteo[]=[]
+
 
  sorteo(compra:string | number):void{
    compra=Number(compra)
+   console.log(compra)
    let indice=this.aleatorio()
    let colorSel=this.color[indice]
    const colorDiv=document.getElementById('color') as HTMLDivElement
@@ -36,8 +41,20 @@ export class SorteoComponent {
     this.descuento=1
     this.texto="El descuento otorgado es del 100%"
   }
+
+  let rifa:Sorteo={
+    vaLorCompra: compra,
+    colorBalota: colorSel,
+    descuento: this.descuento*100+"%",
+    valorDescuento: compra*this.descuento,
+    valorPagar: compra-(compra*this.descuento)
+  }
+
+  this.lista.push(rifa)
   this.descuento=compra*this.descuento
   this.total=compra-this.descuento
+
+
 
  }
 
@@ -46,4 +63,13 @@ export class SorteoComponent {
   return numero
  }
 
+}
+
+
+interface Sorteo { 
+  vaLorCompra: number,
+  colorBalota: string,
+  descuento: string,
+  valorDescuento: number,
+  valorPagar: number
 }

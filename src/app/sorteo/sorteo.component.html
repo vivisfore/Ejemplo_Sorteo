@@ -1,12 +1,46 @@
-<p>sorteo works!</p>
-<div class="input-group mb-3">
-    <span class="input-group-text" id="basic-addon1">Valor de la Compra</span>
-    <input type="text" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1" #compra>
-  </div>
-<div class="d-grid gap-2 col-6 mx-auto">
-    <button class="btn btn-primary" type="button" (click)="sorteo(compra.value)">Aleatorio</button>
+<h1 class="text-center p-2 my-3 bg-primary text-white col-6 mx-auto rounded-top-5">Selecciona tu Balota!!!</h1>
+<div class="bg-primary col-6 mx-auto p-5 rounded-b-5 bg-opacity-10">
+    <div class="col-10 mx-auto">
+    <div class="input-group mb-3 col-4 mx-auto border-danger">
+        <span class="input-group-text" id="basic-addon1">Valor de la Compra</span>
+        <input type="text" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1" #compra>
+      </div>
+    <div class="d-grid gap-2">
+        <button class="btn btn-primary" type="button" (click)="sorteo(compra.value)">Aleatorio</button>
+    </div>
+    <div class="card pt-3 mx-auto mt-5">
+        <div id="color" class="card-img-top"></div>
+        <div class="card-body bg-success-subtle">
+          <p class="card-text">{{texto}}
+            </p>
+            <p>Descuento: {{descuento}}</p>
+            <p>Total a Pagar: {{total}}</p>
+        </div>
+
+      </div>
+    </div>
+    <h3 class="mt-5 bg-primary text-white text-center">Listado del Sorteo</h3>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">V_Compra</th>
+                <th scope="col">Balota</th>
+                <th scope="col">Descuento</th>
+                <th scope="col">V_Descuento</th>
+                <th scope="col">Total_Pagar</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (item of lista; track $index) {
+            <tr>
+                <td scope="col">{{item.vaLorCompra}}</td>
+                <td scope="col">{{item.colorBalota}}</td>
+                <td scope="col">{{item.descuento}}</td>
+                <td scope="col">{{item.valorDescuento}}</td>
+                <td scope="col">{{item.valorPagar}}</td>
+            </tr>
+            }
+        </tbody>
+    </table>
 </div>
-<div id="color"></div>
-<p>{{texto}}</p>
-<p>Descuento: {{descuento}}</p>
-<p>Total a Pagar: {{total}}</p>
+
