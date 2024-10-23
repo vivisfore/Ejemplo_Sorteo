@@ -1,0 +1,12 @@
+<p>sorteo works!</p>
+<div class="input-group mb-3">
+    <span class="input-group-text" id="basic-addon1">Valor de la Compra</span>
+    <input type="text" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1" #compra>
+  </div>
+<div class="d-grid gap-2 col-6 mx-auto">
+    <button class="btn btn-primary" type="button" (click)="sorteo(compra.value)">Aleatorio</button>
+</div>
+<div id="color"></div>
+<p>{{texto}}</p>
+<p>Descuento: {{descuento}}</p>
+<p>Total a Pagar: {{total}}</p>
